@@ -1,0 +1,33 @@
+---
+name: wa-oakville-municipal-local-rules
+description: Use when the user asks about, cites, quotes, or compares Oakville Municipal Court local court rules. Triggers on Rule citations attached to Oakville. Do NOT use for other WA municipal courts, state-level rules (CRLJ, CrRLJ, GR, ER), Superior Court local rules, RCW, or WAC.
+---
+
+# Oakville Municipal Court Local Court Rules
+
+**Source:** https://www.courts.wa.gov/court_rules/pdf/LCR/14/MUN/Oakville/LCR_Oakville_MUN.pdf
+**Snapshot date:** 2026-05-20
+
+**Fidelity verdict:** FAITHFUL. Rules use 'Rule 1, Rule 2, ...' sequential numbering; body text preserved.
+
+## Files
+
+```
+oakville-municipal/
+├── README.md   ← you are here
+└── rules.md    ← consolidated local court rules (6 PDF pages)
+```
+
+## Looking up a rule
+
+```bash
+grep -n -A 60 -E '^[[:space:]]*Rule [0-9]+' rules.md
+```
+
+## Citation format
+
+- `Oakville Municipal Court Rule 5`
+
+## Caveats
+
+- Local rules use bare 'Rule N' numbering — no abbreviated prefix to grep for.

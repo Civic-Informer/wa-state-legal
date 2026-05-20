@@ -19,3 +19,16 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+---
+
+Note on the underlying legal text: the statutory text in `wa-rcw/`, the
+administrative regulations in `wa-administrative-code/`, the court rules in
+`wa-state-court-rules/`, and the local rules in `wa-county-superior-court-rules/`,
+`wa-district-court-rules/`, and `wa-municipal-court-rules/` are government
+edicts of a U.S. state and federal court. Under *Georgia v. Public.Resource.Org,
+Inc.*, 590 U.S. 255 (2020), and longstanding precedent (*Banks v. Manchester*,
+128 U.S. 244 (1888)), the official legal text produced by legislatures and
+courts is uncopyrightable and in the public domain. The MIT license above
+covers the scaffolding, organization, README/SKILL playbooks, and the markdown
+extractions of that public-domain text contributed by this project.
