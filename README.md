@@ -1,4 +1,4 @@
-<img width="3235" height="1022" alt="project 0-civ" src="https://github.com/user-attachments/assets/48c4da4b-c6ec-42fd-ba05-a645bd085248" />
+<img width="3235" height="1022" alt="project o-civ" src="https://github.com/user-attachments/assets/4b0d8d85-2495-4d1f-8b8d-9b0010741677" />
 
 # Washington State Law — open-source Claude Code skills
 
