@@ -2,7 +2,13 @@
 
 # Washington State Law — open-source Claude Code skills
 
-A curated, on-disk snapshot of Washington State legal source material, packaged as installable Claude Code skills. Six sibling corpora live here, each with its own router `SKILL.md` and per-topic `README.md` playbooks. The goal is to make Washington's statutes, regulations, and court rules cite-able and queryable by an LLM **without** requiring it to fetch from the open web — the local markdown is the authoritative source for each skill.
+> A complete, offline-authoritative snapshot of Washington's statutes, administrative regulations, and court rules — packaged as installable [Claude Code](https://claude.com/claude-code) skills so any LLM can cite them accurately without phoning home to a paid legal database.
+
+## Part of Project o-civ
+
+This repository is part of **Project o-civ**, [Civic Informer](https://civicinformer.com)'s initiative to open-source and modernize access to fundamental civic data and information. `wa-state-legal` is the Washington State chapter of that project: six sibling Claude Code skill bundles, each with a router `SKILL.md` and per-topic `README.md` playbooks. The on-disk markdown **is** the authoritative source for each skill — the bundles do not fetch from the web at runtime.
+
+## Corpora at a glance
 
 | Directory | Skill | Covers |
 |-----------|-------|--------|
@@ -13,15 +19,19 @@ A curated, on-disk snapshot of Washington State legal source material, packaged 
 | [`wa-district-court-rules/`](./wa-district-court-rules/) | `wa-district-court-rules` | **District court** (courts of limited jurisdiction) local rules for 40 Washington district courts. |
 | [`wa-municipal-court-rules/`](./wa-municipal-court-rules/) | `wa-municipal-court-rules` | **Municipal court** local rules for 107 city-run municipal courts across 25 of WA's 39 counties. |
 
-Note: a couple of the skill names differ from their directory names — most prominently, `wa-county-superior-court-rules/` ships as the skill `wa-local-court-rules`, and `wa-administrative-code/` ships as `wac`. The table above is the source of truth for directory ↔ skill mapping.
+**By the numbers** — 100 RCW Titles · 227 WAC Titles · 11 statewide rule sets · 32 Superior Courts · 40 district courts · 107 municipal courts · all dated **2026-05-20**.
 
-## Disclaimer — not legal advice
+> A couple of skill names differ from their directory names — most prominently, `wa-county-superior-court-rules/` ships as the skill `wa-local-court-rules`, and `wa-administrative-code/` ships as `wac`. The table above is the source of truth for directory ↔ skill mapping.
+
+---
+
+## ⚠️ Disclaimer — not legal advice
 
 **The authors are not lawyers.** Nothing in this repository is legal advice, and using these skills does not create an attorney-client relationship. The materials here are reference snapshots for research and informational use only. For any filing-critical, time-sensitive, or rights-affecting question, consult a licensed Washington attorney and verify the current rule, regulation, or statute against the official source. The skill bundles explicitly instruct Claude to recommend re-verification when currency matters — but that recommendation only goes as far as the user takes it.
 
 ## Snapshot date
 
-All six corpora are dated **2026-05-20**. They are offline-authoritative for that date. The Washington Legislature, the Code Reviser's Office, and the courts amend statutes, regulations, and rules on an ongoing basis; this snapshot will drift. Re-derive when you need a fresher cut. Several corpora carry older effective dates beneath the snapshot date (see Known caveats).
+All six corpora are dated **2026-05-20**. They are offline-authoritative for that date. The Washington Legislature, the Code Reviser's Office, and the courts amend statutes, regulations, and rules on an ongoing basis; this snapshot will drift. Re-derive when you need a fresher cut. Several corpora carry older effective dates beneath the snapshot date (see [Known caveats](#known-caveats)).
 
 ## Sources
 
@@ -55,7 +65,7 @@ The skill bundles **do not fetch from the web at runtime**. Source URLs are reco
 
 Each subdirectory is a self-contained skill bundle. To install, copy each directory into your `~/.claude/skills/` tree under the skill name shown in the table above:
 
-```
+```sh
 cp -r wa-rcw                          ~/.claude/skills/rcw
 cp -r wa-administrative-code          ~/.claude/skills/wac
 cp -r wa-state-court-rules            ~/.claude/skills/wa-court-rules
@@ -137,4 +147,23 @@ These are the items a public reader should know before relying on this corpus. E
 
 ## License
 
-[MIT](./LICENSE) for the scaffolding, organization, and markdown extractions. The underlying statutory, regulatory, and court-rule text is uncopyrightable government-edict material — see the note at the bottom of the `LICENSE` file for the *Georgia v. Public.Resource.Org* / *Banks v. Manchester* basis. Contributions, additional jurisdictions, and fidelity bug reports welcome via PR or issue.
+[MIT](./LICENSE) for the scaffolding, organization, and markdown extractions. The underlying statutory, regulatory, and court-rule text is uncopyrightable government-edict material — see the note at the bottom of the `LICENSE` file for the *Georgia v. Public.Resource.Org* / *Banks v. Manchester* basis.
+
+---
+
+## About Civic Informer
+
+[**Civic Informer**](https://civicinformer.com) builds tools that make civic information — laws, regulations, agency rules, public records — accessible, queryable, and modern. **Project o-civ** is our open-source layer: the raw substrate, freely available for builders, researchers, journalists, attorneys, and citizens.
+
+**Follow along**
+- Web — [civicinformer.com](https://civicinformer.com)
+- X / Twitter — [@Civicinformer](https://x.com/Civicinformer)
+- LinkedIn — [Civic Informer](https://www.linkedin.com/company/civic-informer)
+
+**Team**
+- [Evan Steinhilb](https://www.linkedin.com/in/evan-steinhilb/) — Founder & CEO
+- [Levi Carlisle](https://www.linkedin.com/in/levi-carlisle/) — Founder & COO
+
+**Contributing**
+
+Contributions, additional jurisdictions, fidelity bug reports, and feature ideas are welcome via PR or issue. If you want to derive a similar bundle for another state or another body of public-record material, get in touch — Project o-civ is built to scale horizontally across jurisdictions.
