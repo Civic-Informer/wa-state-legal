@@ -1,3 +1,5 @@
+<img width="3235" height="1022" alt="project 0-civ" src="https://github.com/user-attachments/assets/48c4da4b-c6ec-42fd-ba05-a645bd085248" />
+
 # Washington State Law — open-source Claude Code skills
 
 A curated, on-disk snapshot of Washington State legal source material, packaged as installable Claude Code skills. Six sibling corpora live here, each with its own router `SKILL.md` and per-topic `README.md` playbooks. The goal is to make Washington's statutes, regulations, and court rules cite-able and queryable by an LLM **without** requiring it to fetch from the open web — the local markdown is the authoritative source for each skill.
