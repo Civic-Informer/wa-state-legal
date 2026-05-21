@@ -1,22 +1,34 @@
 ---
-name: rcw
-description: Use when the user asks about, cites, quotes, paraphrases, or compares Washington State statute law — the Revised Code of Washington (RCW). Triggers on citations like `RCW 4.16.080`, `RCW 9A.36.011`, `Chapter 62A.9A RCW`, "Washington statute," "state law in Washington," or any subject-matter query (statute of limitations, wrongful death, B&O tax, landlord-tenant, criminal sentencing, etc.) that maps to a Washington Title. Routes the request to the relevant Title's `README.md` for grep-able statute text. Do NOT use for: WAC implementing regulations (sibling skill `wa-administrative-code`), Washington court rules (sibling skills `wa-state-court-rules`, `wa-county-superior-court-rules`, `wa-district-court-rules`, `wa-municipal-court-rules`), federal statutes (out of scope), or case law interpreting the RCW (out of scope).
+name: rcw-1-50
+description: Use when the user asks about, cites, quotes, paraphrases, or compares Washington State statute law — the Revised Code of Washington (RCW) — for any Title numbered 1 through 50, or any lettered variant within that numeric range (9A, 23B, 28A, 28B, 28C, 29A, 29B, 30A, 30B, 35A, 50A, 50B). Triggers on citations like `RCW 4.16.080`, `RCW 9A.36.011`, `Chapter 28A.150 RCW`, `RCW 50A.04.005`, or subject-matter queries that map to a Title in this range (civil procedure, statute of limitations, wrongful death, criminal code, sentencing, juvenile offenses, probate / wills / trusts, K-12 schools, higher ed, elections, banking, corporations, insurance, labor / wage and hour, paid family leave, unemployment, motor vehicles, public records, cities and towns, counties, state government structure, etc.). Routes the request to the relevant Title's `README.md` for grep-able statute text. Do NOT use for RCW Titles 51–91 or lettered variants 62A / 70A / 71A / 79A — those live in the sibling skill `rcw-51-100` at `../wa-rcw-51-100/`. Also do NOT use for WAC implementing regulations (sibling skill `wa-administrative-code` at `../wa-administrative-code/`), Washington court rules (sibling skills `wa-state-court-rules`, `wa-county-superior-court-rules`, `wa-district-court-rules`, `wa-municipal-court-rules`), federal statutes (out of scope), or case law interpreting the RCW (out of scope).
 ---
 
-# Revised Code of Washington — Skill-Routed Corpus
+# Revised Code of Washington — Titles 1–50 — Skill-Routed Corpus
 
 This skill answers questions from a curated, on-disk snapshot of the
-**Washington State Legislature's 2025 RCW Archive**, captured on
+**Washington State Legislature's 2025 RCW Archive** for **Titles 1
+through 50** (plus lettered variants in that range), captured on
 **2026-05-20**. The corpus is an offline, citable snapshot — its
 contents are fixed as of the snapshot date. Do not attempt to refetch
 from the web at runtime; the local files are authoritative.
 
-This is the **router**. It is the only `SKILL.md` in the bundle. Each
-RCW Title has its own subdirectory containing a `README.md` (per-Title
-playbook this router instructs you to read) and a `rules.md` (the
-consolidated statute body for that Title). Per-Title `README.md` files
-are **not** separately registered skills — they are documents this
-router tells you to open.
+The full RCW is split across two sibling skills:
+
+- **This skill (`rcw-1-50`)** — Titles 1–50, including lettered variants
+  9A, 23B, 28A, 28B, 28C, 29A, 29B, 30A, 30B, 35A, 50A, 50B.
+- **Sibling skill (`rcw-51-100`)** at `../wa-rcw-51-100/` — Titles 51–91,
+  including lettered variants 62A, 70A, 71A, 79A.
+
+The split is purely a packaging convenience driven by directory size;
+the underlying RCW is one body of law. If a citation's Title number is
+≥ 51 (or is 62A / 70A / 71A / 79A), open the sibling router instead.
+
+This is the **router** for the first half. It is the only `SKILL.md`
+in this bundle. Each RCW Title has its own subdirectory containing a
+`README.md` (per-Title playbook this router instructs you to read) and
+a `rules.md` (the consolidated statute body for that Title). Per-Title
+`README.md` files are **not** separately registered skills — they are
+documents this router tells you to open.
 
 For any topic-specific question, follow the routing table below to the
 Title's `README.md` first; that file lists the chapter cites inside its
@@ -24,12 +36,11 @@ Title's `README.md` first; that file lists the chapter cites inside its
 
 ## What this corpus contains
 
-- **100 Titles** of the RCW, covering every Title number published in the
-  2025 archive (Titles 1–91 numeric, plus lettered Titles 9A, 23B, 28A,
-  28B, 28C, 29A, 29B, 30A, 30B, 35A, 50A, 50B, 62A, 70A, 71A, 79A).
-- **2,764 chapters** consolidated from the Legislature's per-Title
+- **58 Titles** of the RCW (Titles 1–50 numeric plus lettered Titles
+  9A, 23B, 28A, 28B, 28C, 29A, 29B, 30A, 30B, 35A, 50A, 50B).
+- **1,873 chapters** consolidated from the Legislature's per-Title
   "Complete Title" PDFs.
-- **~96 MB** of grep-able markdown across the corpus.
+- **~60 MB** of grep-able markdown across this half of the corpus.
 
 The source body is the Legislature's combined per-Title PDF (one PDF per
 Title, containing the full chapter-by-chapter text). The per-chapter HTML
@@ -37,13 +48,13 @@ pages from the Legislature's site contain only section TOCs and chapter
 notes — **the actual statute body lives only in the PDFs**, so the PDFs
 are the canonical source for `rules.md`.
 
-## Title numbers absent from the archive
+## Title numbers absent from the archive (within range 1–50)
 
 These Title numbers do not exist in the RCW and have no directory here:
 
 - `28`, `29`, `30` — replaced by their lettered variants (28A/28B/28C,
   29A/29B, 30A/30B).
-- `45`, `56`, `62`, `75` — no longer assigned / reserved.
+- `45` — no longer assigned / reserved.
 
 (Title 23 still exists, distinct from Title 23B.)
 
@@ -98,7 +109,8 @@ tree shows. Both are useful.
 | 31    | `31-miscellaneous-loan-agencies/`                                      | Small loans; payday lending; check cashers                         |
 | 32    | `32-washington-savings-bank-act/`                                      | Savings banks                                                      |
 | 33    | `33-washington-savings-association-act/`                               | Savings associations                                               |
-| 62A   | `62A-uniform-commercial-code/`                                         | UCC — sales, leases, negotiable instruments, secured transactions  |
+
+(For UCC — Title 62A — see the sibling skill `rcw-51-100` at `../wa-rcw-51-100/`.)
 
 ### Family, education, libraries, elections
 
@@ -129,7 +141,7 @@ tree shows. Both are useful.
 | 43    | `43-state-government-executive/`                         | Governor; executive agencies (DSHS, Ecology, Commerce, …)        |
 | 44    | `44-state-government-legislative/`                       | Legislature; codes reviser; redistricting                        |
 
-### Transportation, utilities, insurance, labor
+### Transportation, insurance, labor (1–50)
 
 | Title | Directory                                          | Scope                                                                |
 |------:|----------------------------------------------------|----------------------------------------------------------------------|
@@ -141,72 +153,13 @@ tree shows. Both are useful.
 | 50    | `50-unemployment-compensation/`                    | Unemployment insurance                                               |
 | 50A   | `50A-family-and-medical-leave/`                    | Paid Family and Medical Leave                                        |
 | 50B   | `50B-long-term-care/`                              | WA Cares (Long-Term Services and Supports Trust)                     |
-| 51    | `51-industrial-insurance/`                         | Workers' compensation                                                |
-| 80    | `80-public-utilities/`                             | UTC; electric/gas/telecom utilities                                  |
-| 81    | `81-transportation/`                               | Common carriers; railroads; vessel pilotage                          |
 
-### Special districts (utilities, fire, water)
-
-| Title | Directory                          | Scope                          |
-|------:|------------------------------------|--------------------------------|
-| 52    | `52-fire-protection-districts/`    | Fire protection districts      |
-| 53    | `53-port-districts/`               | Port districts                 |
-| 54    | `54-public-utility-districts/`     | PUDs                           |
-| 55    | `55-sanitary-districts/`           | Sanitary districts             |
-| 57    | `57-water-sewer-districts/`        | Water-sewer districts          |
-| 85    | `85-diking-and-drainage/`          | Diking; drainage districts     |
-| 86    | `86-flood-control/`                | Flood control districts        |
-| 87    | `87-irrigation/`                   | Irrigation districts           |
-| 88    | `88-navigation-and-harbor-improvements/` | Pilotage; harbor lines      |
-| 89    | `89-reclamation-soil-conservation-and-land-settlement/` | Conservation districts |
-| 91    | `91-waterways/`                    | Waterways; dredging            |
-
-### Property, real estate, recording, taxes
-
-| Title | Directory                                                       | Scope                                                              |
-|------:|-----------------------------------------------------------------|--------------------------------------------------------------------|
-| 58    | `58-boundaries-and-plats/`                                      | Surveys; plats; subdivisions; condominiums                          |
-| 59    | `59-landlord-and-tenant/`                                       | Residential Landlord-Tenant Act; unlawful detainer; mobile homes    |
-| 60    | `60-liens/`                                                     | Mechanic's, materialman's, garage keeper's, agricultural liens      |
-| 61    | `61-mortgages-deeds-of-trust-and-real-estate-contracts/`        | Foreclosure (judicial and nonjudicial)                              |
-| 63    | `63-personal-property/`                                         | Sales; replevin; unclaimed property; gift cards                     |
-| 64    | `64-real-property-and-conveyances/`                             | Deeds; covenants; easements; condominiums                           |
-| 65    | `65-recording-registration-and-legal-publication/`              | Auditor recording; real-estate excise tax                           |
-| 82    | `82-excise-taxes/`                                              | B&O tax; sales/use tax; public utility tax; tax preferences         |
-| 83    | `83-estate-taxation/`                                           | Washington estate tax                                               |
-| 84    | `84-property-taxes/`                                            | Assessment; levy; exemptions; current-use valuation                 |
-
-### Public health, safety, behavioral health
-
-| Title | Directory                                          | Scope                                                                  |
-|------:|----------------------------------------------------|------------------------------------------------------------------------|
-| 66    | `66-alcoholic-beverage-control/`                   | Liquor licensing; Liquor and Cannabis Board                            |
-| 67    | `67-sports-and-recreation-convention-facilities/`  | Gambling; racing; convention facilities                                |
-| 68    | `68-cemeteries-morgues-and-human-remains/`         | Cemeteries; anatomical gifts                                           |
-| 69    | `69-food-drugs-cosmetics-and-poisons/`             | Controlled Substances Act; food safety; cannabis                       |
-| 70    | `70-public-health-and-safety/`                     | Public health (legacy; see also 70A)                                   |
-| 70A   | `70A-environmental-health-and-safety/`             | Environmental health; air/water quality; cleanup; climate              |
-| 71    | `71-behavioral-health/`                            | Involuntary Treatment Act; civil commitment                            |
-| 71A   | `71A-developmental-disabilities/`                  | Developmental disability services                                      |
-| 72    | `72-state-institutions/`                           | DOC facilities; state hospitals; juvenile rehab                        |
-| 73    | `73-veterans-and-veterans-affairs/`                | Veterans' homes and benefits                                           |
-| 74    | `74-public-assistance/`                            | TANF; medical assistance; child welfare; adult protective services     |
-
-### Natural resources, public lands
-
-| Title | Directory                                | Scope                                                              |
-|------:|------------------------------------------|--------------------------------------------------------------------|
-| 76    | `76-forests-and-forest-products/`        | Forest Practices Act; state forest lands                           |
-| 77    | `77-fish-and-wildlife/`                  | WDFW; hunting/fishing licenses; treaty rights                      |
-| 78    | `78-mines-minerals-and-petroleum/`       | Mine safety; surface mining; oil and gas                           |
-| 79    | `79-public-lands/`                       | State-owned lands; trust lands; aquatic lands                      |
-| 79A   | `79A-public-recreational-lands/`         | State parks; scenic rivers                                         |
-| 90    | `90-water-rights-environment/`           | Water rights; shorelines; State Environmental Policy Act           |
+(For workers' compensation — Title 51 — and utilities / common carriers — Titles 80, 81 — see `../wa-rcw-51-100/`.)
 
 ## Directory layout
 
 ```
-wa-rcw/
+wa-rcw-1-50/
 ├── SKILL.md                                  ← you are here
 ├── .build_summary.json                       ← machine-readable per-Title stats
 ├── 01-general-provisions/
@@ -215,11 +168,8 @@ wa-rcw/
 ├── 02-courts-of-record/
 │   ├── README.md
 │   └── rules.md
-... (one directory per Title, 100 total) ...
-├── 90-water-rights-environment/
-│   ├── README.md
-│   └── rules.md
-└── 91-waterways/
+... (one directory per Title, 58 total) ...
+└── 50B-long-term-care/
     ├── README.md
     └── rules.md
 ```
@@ -228,8 +178,8 @@ All paths in this skill are **relative** to this directory.
 
 ## Routing
 
-For any RCW question, open the matching `README.md` first. Each
-per-Title README has:
+For any RCW question in Titles 1–50, open the matching `README.md`
+first. Each per-Title README has:
 
 - A `description:` field with subject triggers, citation forms, and a
   "Do NOT use for" boundary.
@@ -238,27 +188,34 @@ per-Title README has:
 - Citation conventions for that Title.
 
 The glossary tables above are the routing index. If the user cites
-`RCW {TT}.{NN}.{MMM}`, open `{TT}-*/README.md` (use the table to find
-the directory name).
+`RCW {TT}.{NN}.{MMM}` where `{TT}` is 1–50 or one of the lettered
+variants in this skill, open `{TT}-*/README.md` (use the table to find
+the directory name). If `{TT}` is 51–91 or 62A/70A/71A/79A, route to
+the sibling skill `rcw-51-100` at `../wa-rcw-51-100/` instead.
 
 ## Cross-topic search
 
-When you don't yet know which Title is relevant, grep across the whole
-corpus:
+When you don't yet know which Title is relevant, grep across this half
+of the corpus:
 
 ```bash
-# A term anywhere in the corpus
+# A term anywhere in the 1–50 half
 grep -rni 'wrongful death' --include='rules.md' .
 
 # A specific statute cite (regex anchored to RCW citation form)
 grep -rn -E 'RCW\s+4\.20\.020' --include='rules.md' .
 
-# All chapter headings (every consolidated chapter across all Titles)
+# All chapter headings (every consolidated chapter in this half)
 grep -rn -E '^## RCW ' --include='rules.md' . | head -40
 
-# How many sections in the corpus reference a term
+# How many sections in this half reference a term
 grep -rni 'community property' --include='rules.md' . | wc -l
 ```
+
+If a subject-matter search returns nothing in this half, the topic may
+live in Titles 51–91 — grep the sibling half at `../wa-rcw-51-100/`
+(e.g. UCC at 62A, public health at 70/70A, taxes at 82/83/84, water
+rights at 90).
 
 Once you've narrowed the question to one Title, switch to that Title's
 own `rules.md` for follow-up grep — it's much faster and the per-Title
@@ -271,7 +228,6 @@ Standard RCW citation forms recognized inside `rules.md`:
 - **Section**: `RCW 4.16.080` — Title 4, Chapter 16, Section 080.
 - **Chapter**: `Chapter 4.16 RCW`.
 - **Title**: `Title 4 RCW`.
-- **UCC section** (Title 62A only): `RCW 62A.9A-313` — note the hyphen.
 - **History note** (after each section body): `[2022 c 268 s 32; 2021 c
   215 s 89; 1996 c 134 s 7; ...]`.
 - **Cross-references in notes**: appear in italic in the source PDF;
@@ -283,22 +239,23 @@ with `RCW {TT}.{NN}.{MMM}` at the start of each section.
 
 ## Fidelity status
 
-All 100 Titles have either **FAITHFUL** or **FAITHFUL WITH MINOR
-CAVEATS** verdicts; none required PDF-fallback rebuilds. Each Title's
-per-README documents its own verdict.
+All 58 Titles in this half have either **FAITHFUL** or **FAITHFUL WITH
+MINOR CAVEATS** verdicts; none required PDF-fallback rebuilds. Each
+Title's per-README documents its own verdict.
 
-- **FAITHFUL** (91 Titles): statute body, subsection lettering, and
-  history-note brackets preserved cleanly. Cite directly.
-- **FAITHFUL WITH MINOR CAVEATS** (9 Titles — those with substantial
-  rate or fee tables: 36, 39, 41, 46, 47, 48, 51, 82, 84): body text
-  is clean; tabular data (rate tables, fee schedules, multi-column
-  listings) is preserved as space-aligned text rather than pipe-tables,
-  so it is grep-able but not parseable as structured data.
+- **FAITHFUL**: statute body, subsection lettering, and history-note
+  brackets preserved cleanly. Cite directly.
+- **FAITHFUL WITH MINOR CAVEATS** (Titles 36, 39, 41, 46, 47, 48 in
+  this half): body text is clean; tabular data (rate tables, fee
+  schedules, multi-column listings) is preserved as space-aligned text
+  rather than pipe-tables, so it is grep-able but not parseable as
+  structured data.
 
-No Title was **DEGRADED**. The combined-Title PDF source produces
-consistently clean `pdftotext -layout` output; the cleanup pipeline
-(form-feed unification, page-footer strip, de-hyphenation, blank-line
-collapse, chapter-heading injection) was identical across all Titles.
+No Title in this half is **DEGRADED**. The combined-Title PDF source
+produces consistently clean `pdftotext -layout` output; the cleanup
+pipeline (form-feed unification, page-footer strip, de-hyphenation,
+blank-line collapse, chapter-heading injection) was identical across
+all Titles.
 
 ## Universal notes
 
@@ -310,6 +267,13 @@ collapse, chapter-heading injection) was identical across all Titles.
   Legislature's original Combined Title PDF (`RCW_Title_{NN[X]}_Complete.pdf`)
   at the provenance URL below.
 - **Out-of-scope content lives in sibling skills**:
+  - **RCW Titles 51–91 and lettered variants 62A / 70A / 71A / 79A** —
+    sibling skill `rcw-51-100` at `../wa-rcw-51-100/`. Use that skill
+    for industrial insurance, special districts, landlord-tenant,
+    UCC, alcoholic beverage control, public health and environment,
+    behavioral health, public assistance, fish and wildlife, public
+    lands, public utilities, transportation common carriers, excise
+    and estate and property taxes, water rights, etc.
   - **WAC** (Washington Administrative Code) regulations — sibling skill
     at `../wa-administrative-code/`.
   - **Washington state-wide court rules** (Civil Rules, Rules of

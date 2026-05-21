@@ -628,7 +628,7 @@ grep -rn 'WAC 4-30-100' --include='rules.md.toc.bak' .
 
 - **Effective date:** This snapshot is dated 2026-05-20. The WAC is amended continuously; for currency-sensitive use, the user should re-verify against the official source.
 - **Out of scope:**
-  - **RCW (Revised Code of Washington) statutes** are not in this corpus. The WAC implements RCW; the two are separate bodies. If the user actually wants statute text (e.g. "RCW 9A.04.110"), route to the sibling `wa-rcw/` skill, not this one.
+  - **RCW (Revised Code of Washington) statutes** are not in this corpus. The WAC implements RCW; the two are separate bodies. If the user actually wants statute text (e.g. "RCW 9A.04.110"), route to whichever of `wa-rcw-1-50/` (skill `rcw-1-50`, covers RCW Titles 1–50 plus lettered variants 9A, 23B, 28A/B/C, 29A/B, 30A/B, 35A, 50A/B) or `wa-rcw-51-100/` (skill `rcw-51-100`, covers RCW Titles 51–91 plus lettered variants 62A, 70A, 71A, 79A) covers the Title number — not this skill.
   - **Federal Code of Federal Regulations (CFR)** is not in this corpus.
   - **City and county codes/ordinances** are not in this corpus.
   - **Court rules** (CR, RPC, GR, RAP, etc.) are not in this corpus — see the sibling skills `wa-state-court-rules/` (statewide rules), `wa-county-superior-court-rules/` (county Superior Court local rules), `wa-district-court-rules/`, and `wa-municipal-court-rules/`.

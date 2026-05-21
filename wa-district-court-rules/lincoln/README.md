@@ -1,6 +1,6 @@
 ---
 name: wa-lincoln-district-court-rules
-description: Use when the user asks about, cites, quotes, or compares Lincoln County District Court (Washington) local court rules — any LCRLJ / LIRLJ / LCrRLJ / LARLJ / LMAR / LGR rule attached to this court. Do NOT use for Superior Court LOCAL rules (sibling skill: wa-county-superior-court-rules/), municipal-court LOCAL rules (sibling skill: wa-municipal-court-rules/), the statewide CRLJ/IRLJ/CrRLJ/ARLJ/RALJ rules (sibling skill: wa-state-court-rules/), RCW (sibling skill: wa-rcw/), or WAC (sibling skill: wa-administrative-code/).
+description: Use when the user asks about, cites, quotes, or compares Lincoln County District Court (Washington) local court rules — any LCRLJ / LIRLJ / LCrRLJ / LARLJ / LMAR / LGR rule attached to this court. Do NOT use for Superior Court LOCAL rules (sibling skill: wa-county-superior-court-rules/), municipal-court LOCAL rules (sibling skill: wa-municipal-court-rules/), the statewide CRLJ/IRLJ/CrRLJ/ARLJ/RALJ rules (sibling skill: wa-state-court-rules/), RCW (sibling skills: wa-rcw-1-50/ and wa-rcw-51-100/), or WAC (sibling skill: wa-administrative-code/).
 ---
 
 # Lincoln County District Court — Local Court Rules

@@ -12,7 +12,8 @@ This repository is part of **Project o-civ**, [Civic Informer](https://civicinfo
 
 | Directory | Skill | Covers |
 |-----------|-------|--------|
-| [`wa-rcw/`](./wa-rcw/) | `rcw` | **Revised Code of Washington** — full statute body text. 100 Titles, 2,764 chapters. |
+| [`wa-rcw-1-50/`](./wa-rcw-1-50/) | `rcw-1-50` | **Revised Code of Washington** — RCW Titles 1–50 plus lettered variants — 58 Titles, 1,873 chapters, ~60 MB. |
+| [`wa-rcw-51-100/`](./wa-rcw-51-100/) | `rcw-51-100` | **Revised Code of Washington** — RCW Titles 51–91 plus lettered variants — 42 Titles, 891 chapters, ~36 MB. |
 | [`wa-administrative-code/`](./wa-administrative-code/) | `wac` | **Washington Administrative Code** — codified agency regulations. 227 published Titles, ~2,825 chapters. |
 | [`wa-state-court-rules/`](./wa-state-court-rules/) | `wa-court-rules` | State-promulgated WA court rules (CR, CrR, GR, ER, RPC, CRLJ, CrRLJ, RALJ, ARLJ, RAP) plus U.S. District Court for the Western District of Washington (WAWD) Local Civil Rules. |
 | [`wa-county-superior-court-rules/`](./wa-county-superior-court-rules/) | `wa-local-court-rules` | **Superior Court** local rules for 32 Washington counties, organized into 26 published rulesets (some adjacent counties share a combined ruleset). |
@@ -66,7 +67,8 @@ The skill bundles **do not fetch from the web at runtime**. Source URLs are reco
 Each subdirectory is a self-contained skill bundle. To install, copy each directory into your `~/.claude/skills/` tree under the skill name shown in the table above:
 
 ```sh
-cp -r wa-rcw                          ~/.claude/skills/rcw
+cp -r wa-rcw-1-50                     ~/.claude/skills/rcw-1-50
+cp -r wa-rcw-51-100                   ~/.claude/skills/rcw-51-100
 cp -r wa-administrative-code          ~/.claude/skills/wac
 cp -r wa-state-court-rules            ~/.claude/skills/wa-court-rules
 cp -r wa-county-superior-court-rules  ~/.claude/skills/wa-local-court-rules
@@ -99,10 +101,11 @@ See each subdirectory's `SKILL.md` and `README.md` for full per-corpus scope, fi
 
 These are the items a public reader should know before relying on this corpus. Each sub-corpus README documents them in more detail.
 
-### `wa-rcw/`
-- 91 of 100 Titles are FAITHFUL. 9 Titles (36, 39, 41, 46, 47, 48, 51, 82, 84) are FAITHFUL WITH MINOR CAVEATS — large rate/fee tables are preserved as whitespace-aligned text, grep-able but not as structured pipe-tables. No Title is DEGRADED.
-- **Title 62A quirk:** the Uniform Commercial Code uses hyphenated section numbering (`RCW 62A.9A-313`). Source-PDF chapter boundaries are `Article N`; these are normalized to `## RCW 62A.N` headings during the build.
-- Reserved/skipped Titles (28, 29, 30, 45, 56, 62, 75) are intentionally absent — they were repealed or replaced by lettered variants.
+### `wa-rcw-1-50/` and `wa-rcw-51-100/`
+- The RCW corpus is split into two sibling skills by Title number: `wa-rcw-1-50/` (skill `rcw-1-50`) covers Titles 1–50 plus lettered variants 9A, 23B, 28A, 28B, 28C, 29A, 29B, 30A, 30B, 35A, 50A, 50B; `wa-rcw-51-100/` (skill `rcw-51-100`) covers Titles 51–91 plus lettered variants 62A, 70A, 71A, 79A. Together they preserve the full 100 Titles, 2,764 chapters.
+- 91 of 100 Titles are FAITHFUL. 9 Titles are FAITHFUL WITH MINOR CAVEATS — large rate/fee tables are preserved as whitespace-aligned text, grep-able but not as structured pipe-tables. In `wa-rcw-1-50/`: Titles **36, 39, 41, 46, 47, 48**. In `wa-rcw-51-100/`: Titles **51, 82, 84**. No Title is DEGRADED.
+- **Title 62A quirk** (lives in `wa-rcw-51-100/`): the Uniform Commercial Code uses hyphenated section numbering (`RCW 62A.9A-313`). Source-PDF chapter boundaries are `Article N`; these are normalized to `## RCW 62A.N` headings during the build.
+- Reserved/skipped Titles (28, 29, 30, 45, 56, 62, 75) are intentionally absent — they were repealed or replaced by lettered variants. Titles 28, 29, 30, 45 are absent from `wa-rcw-1-50/`; Titles 56, 62, 75 are absent from `wa-rcw-51-100/`.
 
 ### `wa-administrative-code/`
 - 174 Titles FAITHFUL. 52 Titles are N/A — empty in the 2025 archive (historical or superseded agency designations); only a stub `rules.md` is present.
